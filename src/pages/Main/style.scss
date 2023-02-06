@@ -17,7 +17,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  .left-div-span {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10vh 2vw;
+
+    span {
+      color: white;
+      font-size: 20px;
+    }
+
+    span:nth-of-type(1) {
+
+      text-align: center;
+      margin-bottom: 2vh;
+    }
+
+    span:nth-of-type(2) {
+
+      text-align: left;
+      margin-bottom: 2vh;
+    }
+  }
+
 }
 
 .right-div {
@@ -38,8 +66,8 @@
   text-align: center;
 
   cursor: pointer;
-  font-family: Roboto;
-  font-size: 14px;
+  font-family: "Roboto";
+  font-size: 18px;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0em;
@@ -79,4 +107,38 @@
 
 .hidden {
   display: none;
+}
+
+.modal-abertura-explicacao {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+
+  background-color: black;
+
+  opacity: 0.8;
+
+  .modal-abertura-explicacao-interno {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: grey;
+
+    border-radius: 15px;
+
+    height: 30vh;
+    width: 30vw;
+
+    h1 {
+      color: white;
+    }
+  }
 }

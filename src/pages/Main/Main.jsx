@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 import cardsArray from "../../cards";
 import cubosPuzzle from "../../assets/cubosPuzzle.svg";
 import cardback from "../../assets/card-back.png";
@@ -7,8 +7,15 @@ import { useState, useRef } from "react";
 
 function Main() {
   const [cards, setCards] = useState([]);
+  const [modalAbertura, setModalAbertura] = useState(true);
   const numberTurned = useRef(0);
   const jogoFinalizado = useRef(false);
+
+  function handleCloseModal() {
+    setModalAbertura(!modalAbertura);
+    handleResetButton();
+
+  }
 
   function handleResetButton() {
     const arrayAtual = [...cardsArray];
@@ -93,7 +100,14 @@ function Main() {
   return (
     <div className="container">
       <div className="left-div">
-        <img src={cubosPuzzle}></img>
+        <div className="left-div-span">
+        <span>Memmory Puzzle
+        </span>  
+
+        <span>
+        Desenvolvido por Marcio Jarros durante o curso de desenvolvimento de software da Cubos Academy, em 2022.
+        </span>
+        </div>
         <button onClick={() => handleResetButton()}>Iniciar / Reset</button>
       </div>
 
@@ -105,6 +119,7 @@ function Main() {
                 onClick={() => handleTurnCards(card.id)}
                 className="card"
                 src={card.turned ? card.image : cardback}
+                alt={card.alt}
               ></img>
             </li>
           ))}
@@ -114,8 +129,12 @@ function Main() {
             jogoFinalizado.current === true ? "" : "hidden"
           } `}
           src={congrats}
+          alt="modal-congrats"
         ></img>
       </div>
+      {modalAbertura &&  <div className="modal-abertura-explicacao" onClick={() => handleCloseModal()}>
+        <div className="modal-abertura-explicacao-interno"><span>Jogo da Memória</span></div>
+        </div>}
     </div>
   );
 }
